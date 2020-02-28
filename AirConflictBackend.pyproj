@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>AirConflict</Name>
+    <RootNamespace>AirConflict</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <WebBrowserPort>62080</WebBrowserPort>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d9a624ee-61df-48ec-868b-3ecff3af22a3}</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <WebBrowserUrl>http://localhost:62080</WebBrowserUrl>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>AirConflict.settings</DjangoSettingsModule>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app\forms.py" />
+    <Compile Include="app\models.py" />
+    <Compile Include="app\tests.py" />
+    <Compile Include="app\views.py" />
+    <Compile Include="app\__init__.py" />
+    <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="flightapi\admin.py" />
+    <Compile Include="flightapi\airport\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\apps.py" />
+    <Compile Include="flightapi\flight\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\general\coordinate.py" />
+    <Compile Include="flightapi\general\__init__.py" />
+    <Compile Include="flightapi\management\commands\add_csv_to_database.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\management\commands\map.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\management\commands\testing.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\migrations\__init__.py" />
+    <Compile Include="flightapi\models.py" />
+    <Compile Include="flightapi\route\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\tests.py" />
+    <Compile Include="flightapi\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\views.py" />
+    <Compile Include="flightapi\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="AirConflict\__init__.py" />
+    <Compile Include="AirConflict\settings.py" />
+    <Compile Include="AirConflict\urls.py" />
+    <Compile Include="AirConflict\wsgi.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\migrations\" />
+    <Folder Include="app\static\" />
+    <Folder Include="app\static\app\" />
+    <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\templates\" />
+    <Folder Include="app\templates\app\" />
+    <Folder Include="AirConflict\" />
+    <Folder Include="flightapi\" />
+    <Folder Include="flightapi\data\airport\" />
+    <Folder Include="flightapi\data\map\" />
+    <Folder Include="flightapi\data\map\countries_50m\" />
+    <Folder Include="flightapi\general\" />
+    <Folder Include="flightapi\general\__pycache__\" />
+    <Folder Include="flightapi\management\commands\" />
+    <Folder Include="flightapi\migrations\" />
+    <Folder Include="flightapi\flight\" />
+    <Folder Include="flightapi\airport\" />
+    <Folder Include="flightapi\data\" />
+    <Folder Include="flightapi\management\" />
+    <Folder Include="flightapi\route\" />
+    <Folder Include="flightapi\templates\" />
+    <Folder Include="flightapi\templates\flightapi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\templates\app\airport.html" />
+    <Content Include="app\templates\app\airports.html" />
+    <Content Include="app\templates\app\data.html" />
+    <Content Include="flightapi\data\airport\airports.csv" />
+    <Content Include="flightapi\data\airport\aus_airports.csv" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.cpg" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.dbf" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.prj" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.README.html" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.shp" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.shx" />
+    <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.VERSION.txt" />
+    <Content Include="flightapi\general\__pycache__\coordinate.cpython-37.pyc" />
+    <Content Include="flightapi\general\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="flightapi\templates\flightapi\index.html" />
+    <Content Include="requirements.txt" />
+    <Content Include="db.sqlite3" />
+    <Content Include="app\static\app\content\bootstrap.css" />
+    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\content\site.css" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\static\app\scripts\bootstrap.js" />
+    <Content Include="app\static\app\scripts\bootstrap.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.js" />
+    <Content Include="app\static\app\scripts\jquery-1.10.2.min.map" />
+    <Content Include="app\static\app\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.min.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="app\static\app\scripts\modernizr-2.6.2.js" />
+    <Content Include="app\static\app\scripts\respond.js" />
+    <Content Include="app\static\app\scripts\respond.min.js" />
+    <Content Include="app\static\app\scripts\_references.js" />
+    <Content Include="app\templates\app\about.html" />
+    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\layout.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\loginpartial.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.html">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.7</Version>
+      <Description>env (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

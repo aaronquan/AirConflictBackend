@@ -1,0 +1,11 @@
+id,name,city,country,iaia,icao,latitude,longitude,altitude,unused_timezone,dst,timezone,type,source
+3336,"Hobart International Airport","Hobart","Australia","HBA","YMHB",-42.836101532,147.509994507,13,10,"O","Australia/Melbourne","airport","OurAirports"
+3322,"Cairns International Airport","Cairns","Australia","CNS","YBCS",-16.885799408,145.755004883,10,10,"N","Australia/Brisbane","airport","OurAirports"
+3341,"Adelaide International Airport","Adelaide","Australia","ADL","YPAD",-34.94499969482422,138.531005859375,20,9.5,"O","Australia/Adelaide","airport","OurAirports"
+3361,"Sydney Kingsford Smith International Airport","Sydney","Australia","SYD","YSSY",-33.94609832763672,151.177001953125,21,10,"O","Australia/Sydney","airport","OurAirports"
+3320,"Brisbane International Airport","Brisbane","Australia","BNE","YBBN",-27.384199142456055,153.11700439453125,13,10,"N","Australia/Brisbane","airport","OurAirports"
+3321,"Gold Coast Airport","Coolangatta","Australia","OOL","YBCG",-28.1644001007,153.505004883,21,10,"N","Australia/Brisbane","airport","OurAirports"
+3355,"Canberra International Airport","Canberra","Australia","CBR","YSCB",-35.30690002441406,149.19500732421875,1886,10,"O","Australia/Sydney","airport","OurAirports"
+3339,"Melbourne International Airport","Melbourne","Australia","MEL","YMML",-37.673301696777344,144.84300231933594,434,10,"O","Australia/Hobart","airport","OurAirports"
+3351,"Perth International Airport","Perth","Australia","PER","YPPH",-31.94029998779297,115.96700286865234,67,8,"N","Australia/Perth","airport","OurAirports"
+3999,"Darwin International Airport","Darwin","Australia","DRW","YPDN",-12.41469955444336,130.8769989013672,103,9.5,"N","Australia/Darwin","airport","OurAirports"

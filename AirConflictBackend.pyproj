@@ -106,6 +106,7 @@
     <Folder Include="flightapi\templates\flightapi\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="app\templates\app\airport.html" />
     <Content Include="app\templates\app\airports.html" />
     <Content Include="app\templates\app\data.html" />

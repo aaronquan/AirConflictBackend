@@ -1,6 +1,11 @@
 from django.db import models
 from django.db.models import Q, F
 
+class AusAirports(models.Manager):
+    def get_queryset(self):
+        icao_list = ["YMHB", "YBCS", "YPAD", "YSSY", "YBBN", "YBCG", "YSCB", "YMML", "YPPH", "YPDN"]
+        return super().get_queryset().filter(icao__in=icao_list)
+
 class Airport(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=60)
@@ -10,6 +15,9 @@ class Airport(models.Model):
     longitude = models.FloatField()
     altitude = models.SmallIntegerField()
     timezone = models.CharField(max_length=40)
+
+    objects = models.Manager()
+    aus_airports = AusAirports()
 
 #class Route(models.Model):
 #	origin = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='origin') # check on delete
@@ -37,14 +45,6 @@ class Airport(models.Model):
 #    climb_rate = models.SmallIntegerField()
 #    facility = models.CharField()
 
-#class MapLongitudeCrossManager(models.Manager):
-#    def get_queryset(self):
-#        return super().get_queryset().filter(min_longitude__gt=F('max_longitude'))
-
-#class MapLongitudeNormalManager(models.Manager):
-#    def get_queryset(self):
-#        return super().get_queryset().filter(min_longitude__lte=F('max_longitude'))
-
 # map models
 # check these models (don't migrate yet)
 class MapShape(models.Model):
@@ -52,7 +52,7 @@ class MapShape(models.Model):
     #parts, could have separate shape for multiple part shapes (check format and other variables of shape)
     #bounding fields (bbox)
     sovereignty = models.CharField(max_length=32)
-    admin = models.CharField(max_length=35)
+    admin = models.CharField(max_length=35, primary_key=True)
     continent  = models.CharField(max_length=23)
     min_longitude = models.FloatField()
     max_longitude = models.FloatField()
@@ -76,7 +76,7 @@ class MapShape(models.Model):
         return inside_lon and inside_lat
 
 class MapPoint(models.Model):
-    shape = models.ForeignKey(MapShape, on_delete=models.CASCADE, related_name='mappoint') # check on_delete
+    shape = models.ForeignKey(MapShape, on_delete=models.CASCADE, related_name='mappoint')
     seq_no = models.PositiveIntegerField() # index of point
     longitude = models.FloatField()
     latitude = models.FloatField()

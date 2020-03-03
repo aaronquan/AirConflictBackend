@@ -17,28 +17,13 @@ from .serializers import *
 
 from flightapi.general import *
 
-class AirportList(APIView):
-    def get(self, request):
-        airports = Airport.objects.all()
-        serializer = AirportSerializer(airports, many=True)
-        return Response(serializer.data)
-    def post(self):
-        pass
-
 class AirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer
     queryset = Airport.objects.all()
-    '''
-    def list(self, request):
-        queryset = Airport.objects.all()
-        serializer = AirportSerializer(queryset, many=True)
-        return Response(serializer.data)
-    def retrieve(self, request, pk=None):
-        queryset = Airport.objects.all()
-        airport = get_object_or_404(queryset, pk=pk)
-        serializer = AirportSerializer(airport)
-        return Response(serializer.data)
-    '''
+
+class AusAirportViewSet(viewsets.ModelViewSet):
+    serializer_class = AirportSerializer
+    queryset = Airport.aus_airports.all()
 
 class PageNumberPaginationWithCount(pagination.PageNumberPagination):
     def get_paginated_response(self, data):

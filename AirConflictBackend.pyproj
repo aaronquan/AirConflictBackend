@@ -52,7 +52,13 @@
     <Compile Include="flightapi\management\commands\add_csv_to_database.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="flightapi\management\commands\delete.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="flightapi\management\commands\map.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="flightapi\management\commands\post_csv.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="flightapi\management\commands\testing.py">
@@ -122,6 +128,7 @@
     <Content Include="flightapi\general\__pycache__\coordinate.cpython-37.pyc" />
     <Content Include="flightapi\general\__pycache__\__init__.cpython-37.pyc" />
     <Content Include="flightapi\templates\flightapi\index.html" />
+    <Content Include="Procfile" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -152,11 +159,6 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="readme.html">
-      <SubType>WebBrowser</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

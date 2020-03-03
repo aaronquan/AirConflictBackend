@@ -3,7 +3,8 @@ from rest_framework import routers
 from flightapi import views
 
 router = routers.SimpleRouter()
-router.register('airports', views.AirportViewSet)
+router.register('airport', views.AirportViewSet)
+router.register('ausairport', views.AusAirportViewSet)
 router.register('map', views.MapViewSet)
 router.register('maparea', views.MapAreaViewSet, 'map')
 
@@ -12,7 +13,6 @@ router.register('maparea', views.MapAreaViewSet, 'map')
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('airportslist', views.AirportList.as_view()),
 ]
 
 urlpatterns += router.urls

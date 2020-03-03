@@ -16,7 +16,7 @@ class Command(BaseCommand):
         file_path = options['path']
         _model = apps.get_model(options['app_name'], options['model_name'])
         model_fields = [f.name for f in _model._meta.get_fields()]
-        with open(file_path, 'r') as csv_file:
+        with open(file_path, 'r', encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=',')
             header = next(reader)
             for row in reader:

@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-
 from flightapi.models import MapShape, MapPoint, ShapePart
 
 import shapefile
@@ -14,8 +13,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         file_path = options['path']
         sf = shapefile.Reader(file_path)
-        #records = sf.records() # contains fields
-        #shapes = sf.shapes()
         for sr in sf.iterShapeRecords():
             record = sr.record
             shape = sr.shape
@@ -27,14 +24,9 @@ class Command(BaseCommand):
             ms.save()
             for i, point in enumerate(sr.shape.points):
                 map_point = {'shape': ms, 'longitude':point[0], 'latitude':point[1], 'seq_no':i}
-                #print(map_point)
                 mp = MapPoint(**map_point)
                 mp.save()
-                #break
             for part in sr.shape.parts:
                 shape_part = {'shape': ms, 'index': part}
-                #print(shape_part)
                 sp = ShapePart(**shape_part)
                 sp.save()
-                #break
-            #break

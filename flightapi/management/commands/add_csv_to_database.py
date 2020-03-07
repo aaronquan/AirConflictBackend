@@ -4,6 +4,8 @@ import csv
 
 # global parser for csv files which contain a header
 
+# airports: python manage.py add_csv_to_database flightapi/data/airport/filtered_airports.csv airport flightapi
+
 class Command(BaseCommand):
     help = 'Creating model objects according the file path specified'
 

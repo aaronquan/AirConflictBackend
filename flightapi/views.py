@@ -20,10 +20,12 @@ from flightapi.general import *
 class AirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer
     queryset = Airport.objects.all()
+    pagination_class = PageNumberPaginationWithCount
 
 class AusAirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer
     queryset = Airport.aus_airports.all()
+    pagination_class = PageNumberPaginationWithCount
 
 class PageNumberPaginationWithCount(pagination.PageNumberPagination):
     def get_paginated_response(self, data):

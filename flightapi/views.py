@@ -6,7 +6,6 @@ from django.db.models import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, viewsets
-from rest_framework import pagination
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
 
@@ -14,30 +13,19 @@ import json
 
 from .models import Airport
 from .serializers import *
+from .pagination import *
 
 from flightapi.general import *
-
-class PageNumberPaginationWithCount(pagination.PageNumberPagination):
-    def get_paginated_response(self, data):
-        response = super(PageNumberPaginationWithCount, self).get_paginated_response(data)
-        response.data['total_pages'] = self.page.paginator.num_pages
-        return response
-
-class PageCountOnly(pagination.PageNumberPagination):
-    def get_paginated_response(self, data):
-        return Response({
-            'total_pages': self.page.paginator.num_pages
-        })
 
 class AirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer
     queryset = Airport.objects.all()
-    pagination_class = PageNumberPaginationWithCount
+    pagination_class = LargePageNumberPaginationWithCount
 
 class AusAirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer
     queryset = Airport.aus_airports.all()
-    pagination_class = PageNumberPaginationWithCount
+    pagination_class = SmallPageNumberPaginationWithCount
 
 class MapFilter(filters.FilterSet):
     class Meta:
@@ -54,7 +42,7 @@ class MapFilter(filters.FilterSet):
 
 class MapViewSet(viewsets.ModelViewSet):
     serializer_class = MapShapeSerializer
-    pagination_class = PageNumberPaginationWithCount
+    pagination_class = SmallPageNumberPaginationWithCount
     queryset = MapShape.objects.all()
     #filter_backends = [MapRegionFilter]
     filterset_class = MapFilter
@@ -64,7 +52,7 @@ class MapViewSet(viewsets.ModelViewSet):
 # min_longitude can be > max_longitude, then take the area min_longitude to 180 and -180 to max_longitude
 class MapAreaViewSet(viewsets.ModelViewSet):
     serializer_class = MapShapeSerializer
-    pagination_class = PageNumberPaginationWithCount
+    pagination_class = SmallPageNumberPaginationWithCount
     def get_queryset(self):
         min_lon = self.request.query_params.get('min_longitude', None)
         max_lon = self.request.query_params.get('max_longitude', None)

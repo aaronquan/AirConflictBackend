@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="flightapi\migrations\__init__.py" />
     <Compile Include="flightapi\models.py" />
+    <Compile Include="flightapi\pagination.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="flightapi\route\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -118,6 +121,7 @@
     <Content Include="app\templates\app\data.html" />
     <Content Include="flightapi\data\airport\airports.csv" />
     <Content Include="flightapi\data\airport\aus_airports.csv" />
+    <Content Include="flightapi\data\airport\filtered_airports.csv" />
     <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.cpg" />
     <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.dbf" />
     <Content Include="flightapi\data\map\countries_50m\ne_50m_admin_0_countries_lakes.prj" />

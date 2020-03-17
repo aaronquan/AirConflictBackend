@@ -63,7 +63,7 @@ class MapShape(models.Model):
     #longitude_normal = MapLongitudeNormalManager() # set for when longitude does not pass the 180 to -180 line
     #all models have min_longitude < max_longitude i.e. -180 to 180 if crosses 180 line
     def bounding_box(self):
-        return {'min_longitude': self.min_longitude, 'max_longitiude': self.max_longitude, 
+        return {'min_longitude': self.min_longitude, 'max_longitude': self.max_longitude, 
                 'min_latitude': self.min_latitude, 'max_latitude': self.max_latitude}
     def parts(self):
         sets = []

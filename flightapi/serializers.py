@@ -14,12 +14,14 @@ class MapPointSerializer(serializers.ModelSerializer):
         return [instance.longitude, instance.latitude]
 
 class MapShapeSerializer(serializers.ModelSerializer):
+    bounding_box = serializers.SerializerMethodField()
     points = serializers.SerializerMethodField()
     class Meta:
         model = MapShape
-        fields = ['sovereignty', 'admin', 'continent','min_longitude', 
-                  'min_latitude', 'max_longitude', 'max_latitude', 'points']
-
+        fields = ['sovereignty', 'admin', 'continent', 'bounding_box', 'points']
+                  #'min_longitude', 'min_latitude', 'max_longitude', 'max_latitude']
+    def get_bounding_box(self, obj):
+        return obj.bounding_box()
     def get_points(self, obj):
         parts = obj.parts()
         return [MapPointSerializer(part, many=True).data for part in parts]

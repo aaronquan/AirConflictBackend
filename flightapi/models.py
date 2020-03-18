@@ -87,4 +87,8 @@ class MapPoint(models.Model):
 class ShapePart(models.Model):
     shape = models.ForeignKey(MapShape, on_delete=models.CASCADE, related_name='shapepart')
     index = models.PositiveIntegerField() #index of map point (seq_no); divides map points into parts
+    min_longitude = models.FloatField(default=0)
+    max_longitude = models.FloatField(default=0)
+    min_latitude = models.FloatField(default=0)
+    max_latitude = models.FloatField(default=0)
 

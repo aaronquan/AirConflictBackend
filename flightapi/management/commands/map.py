@@ -25,14 +25,14 @@ class Command(BaseCommand):
             ms = MapShape(**map_shape)
             ms.save()
             for i, point in enumerate(sr.shape.points):
-                map_point = {'shape': 0, 'longitude':point[0], 'latitude':point[1], 'seq_no':i} #change {shape: ms}
+                map_point = {'shape': ms, 'longitude':point[0], 'latitude':point[1], 'seq_no':i} #change {shape: ms}
                 mp = MapPoint(**map_point)
                 mp.save()
             last = len(sr.shape.points)
             shape_parts = []
             for part in reversed(sr.shape.parts):
                 points = sr.shape.points[part:last]
-                shape_dict = {'shape': 0, 'index': part}
+                shape_dict = {'shape': ms, 'index': part}
                 bound_dict = point_bounds(points)
                 shape_dict.update(bound_dict)
                 shape_parts.insert(0, shape_dict)

@@ -66,13 +66,13 @@ class MapShape(models.Model):
         return {'min_longitude': self.min_longitude, 'max_longitude': self.max_longitude, 
                 'min_latitude': self.min_latitude, 'max_latitude': self.max_latitude}
     def parts(self):
-        sets = []
+        parts = [] # dict of points and bounding_box
         last = self.mappoint.count()
         for part in self.shapepart.all().order_by('-index'):
             points = self.mappoint.filter(seq_no__gte=part.index,seq_no__lt=last)
             last = part.index
-            sets.append(points)
-        return sets
+            parts.append({'points': points, 'bounding_box': part.bounding_box()})
+        return parts
     def inside_bound(self, min_lon, max_lon, min_lat, max_lat):
         inside_lon = coordinate.is_longitude_intersecting(min_lon, max_lon, self.min_longitude, self.max_longitude)
         inside_lat = coordinate.is_latitude_intersecting(min_lat, max_lat, self.min_latitude, self.max_latitude)
@@ -91,4 +91,7 @@ class ShapePart(models.Model):
     max_longitude = models.FloatField(default=0)
     min_latitude = models.FloatField(default=0)
     max_latitude = models.FloatField(default=0)
+    def bounding_box(self):
+        return {'min_longitude': self.min_longitude, 'max_longitude': self.max_longitude, 
+                'min_latitude': self.min_latitude, 'max_latitude': self.max_latitude}
 

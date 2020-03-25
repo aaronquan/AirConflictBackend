@@ -19,8 +19,22 @@ from flightapi.general import *
 
 class AirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer
-    queryset = Airport.objects.all()
+    #queryset = Airport.objects.all()
     pagination_class = LargePageNumberPaginationWithCount
+    def get_queryset(self):
+        min_lon = self.request.query_params.get('min_longitude', None)
+        max_lon = self.request.query_params.get('max_longitude', None)
+        min_lat = self.request.query_params.get('min_latitude', None)
+        max_lat = self.request.query_params.get('max_latitude', None)
+        airports = Airport.objects.all()
+        if all(var is not None for var in [min_lon, max_lon, min_lat, max_lat]):
+            if min_lon < max_lon:
+               airports = airports.filter(longitude__lt=max_lon, longitude__gt=min_lon, 
+                                          latitude__lt=max_lat, latitude__gt=min_lat)
+            elif min_lon > max_lon:
+                airports = airports.filter(Q(longitude__lt=180, longitude__gt=min_lon) | Q(longitude__lt=max_lon, longitude__gt=-180), 
+                                           Q(latitude__lt=max_lat, latitude__gt=min_lat))
+        return airports
 
 class AusAirportViewSet(viewsets.ModelViewSet):
     serializer_class = AirportSerializer

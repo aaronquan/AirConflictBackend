@@ -3,7 +3,7 @@ from rest_framework import routers
 from flightapi import views
 
 router = routers.SimpleRouter()
-router.register('airport', views.AirportViewSet)
+router.register('airport', views.AirportViewSet, 'airport')
 router.register('ausairport', views.AusAirportViewSet)
 router.register('map', views.MapViewSet)
 router.register('maparea', views.MapAreaViewSet, 'map')
